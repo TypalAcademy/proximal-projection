@@ -1,9 +1,11 @@
 site_name: Proximal Projection for Stable Linearly Constrained Optimization
 site_description: Documentation for code used in the paper for the Proximal Projection algorithm.
 
+
 extra_css:
   - stylesheets/extra.css
  
+
 plugins:
   - mkdocstrings 
   - mkdocs-jupyter:
@@ -34,9 +36,11 @@ theme:
     - content.code.copy      
     - navigation.footer  
 
+
 # Github Repo
 repo_name: proximal-projection
 repo_url: https://github.com/typalacademy/proximal-projection
+
 
 extra:
   homepage: https://typal.academy
@@ -51,6 +55,7 @@ extra:
       link: https://x.com/TypalAcademy     
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/@TypalAcademy         
+
 
 markdown_extensions:
   - pymdownx.arithmatex   # Enables LaTeX equations
@@ -74,14 +79,17 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+
 nav:
     - 'Home': index.md
-    - 'Numerical Examples':
+    - 'Proximal Projection': proximal_projection.md
+    - 'Examples':
         - 'Basis Pursuit': basis_pursuit.md
         - 'Principal Component Pursuit': notebooks/stable_principal_component_pursuit.ipynb    
         - 'Earth Movers Distance': notebooks/earth_movers_distance.ipynb

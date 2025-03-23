@@ -1,7 +1,5 @@
 .DS_Store
-
-data/frames/*
-src/.ipynb_checkpoints/*
-docs/notebooks/.ipynb_checkpoints/*
+examples/stable_principal_component_pursuit/frames/*
+*/.ipynb_checkpoints/
 *.lock
 *.pyc

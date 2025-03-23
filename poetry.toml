@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "proximal-projection-examples"
+version = "1.0.0"
+description = "Numerical examples using proximal projection algorithm"
+authors = ["Howard Heaton <research@typal.academy>"]
+packages = [{ include = "basis_pursuit", from = "src" }]
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+numpy = "^1.21"
+matplotlib = "^3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

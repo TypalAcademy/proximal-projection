@@ -1,25 +1,25 @@
-[tool.poetry]
-name = "proximal-projection"
-version = "0.1.0"
-description = "Numerical examples using proximal projection algorithm"
-authors = ["Howard Heaton <research@typal.academy>"]
-packages = [{ include = "basis_pursuit", from = "src" }]
-
 [project]
 name = "proximal-projection"
 version = "0.1.0"
-description = "A brief description of your module"
-authors = [{name = "Your Name", email = "your.email@example.com"}]
+description = "Implementation of the proximal projection method"
+authors = [{name = "Howard Heaton", email = "research@typal.academy"}]
 license = {text = "MIT"}
-dependencies = ["requests"]
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.9"
+
+[tool.poetry]
+packages = [{ include = "proximal_projection", from = "src" }]
+
+
+[tool.poetry.scripts]
+basis_pursuit_experiment = "examples.basis_pursuit.basis_pursuit_experiment:run_basis_pursuit_experiment"
+
 
 
 [tool.poetry.dependencies]
-python = ">=3.12"
+python = ">=3.9"
 pydantic = "^2.10.6"
-numpy = "^2.2.4"
+numpy = "^1.26.4"  # Use the latest stable NumPy version
 
 
 [tool.poetry.group.dev.dependencies]
@@ -35,7 +35,7 @@ target-version = ['py312']
 
 
 [tool.pylint."MESSAGES CONTROL"]
-disable = ["invalid-name", "anomalous-backslash-in-string"]
+disable = ["invalid-name"]
 
 
 [tool.mypy]
@@ -44,7 +44,3 @@ disallow_untyped_calls = true
 check_untyped_defs = true
 warn_return_any = true
 ignore_missing_imports = true
-
-
-[tool.poetry.scripts]
-basis_pursuit_experiment = "basis_pursuit.basis_pursuit_experiment:main"

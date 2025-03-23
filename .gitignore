@@ -3,3 +3,4 @@ examples/stable_principal_component_pursuit/frames/*
 */.ipynb_checkpoints/
 *.lock
 *.pyc
+*.log

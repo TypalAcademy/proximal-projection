@@ -12,7 +12,7 @@ $$
     \mathsf{ \underset{x}{min} \ |x|_1 \quad s.t. \quad Ax=b. }
 $$
 
-::: src.basis_pursuit.methods.shrink
+::: examples.basis_pursuit.methods.shrink
     options:
       show_root_heading: false
 

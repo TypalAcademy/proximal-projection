@@ -55,7 +55,7 @@ def compile_latex() -> None:
     print(f"PDF with basis pursuit plots saved in: {tex_dir}")
 
 
-def sample_initialization(seed, m=500, n=2000) -> tuple[np.array, np.array]:
+def sample_initialization(seed, m=500, n=2000) -> tuple[np.ndarray, np.ndarray]:
     """Randomly pick matrix A and vector b using random seed"""
     np.random.seed(seed)
     A = np.random.normal(0, 1.0 / m, size=(m, n))

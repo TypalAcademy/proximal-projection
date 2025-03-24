@@ -1,6 +1,6 @@
 """General purpose implementation of proximal-projection algorithm"""
 
 
-def func():
+def proximal_projection():
     "TBD"
     return

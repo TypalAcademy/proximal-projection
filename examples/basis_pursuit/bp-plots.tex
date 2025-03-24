@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage[paperheight=2.0in,
+            paperwidth=2.25in,
+            top=0.0in,
+            bottom=0.0in,
+            left=0.01in,  
+            right=0.01in,  
+            ]{geometry}  
+  
+\usepackage{tikz} 
+\usepackage{pgfplots}   
+\usepackage{xcolor}  
+
+\definecolor{TypalBlue}{HTML}{7086DF}  
+\definecolor{TypalBlueDark}{HTML}{5467b2}
+\definecolor{TypalRed}{HTML}{D32B08}    
+\definecolor{TypalGreen}{HTML}{3cb371}    
+
+\pgfplotsset{scaled x ticks=false}
+\def\plotSpacing{1}
+   
+\usepackage[default]{raleway}   
+\usepackage{fontawesome} 
+\usepackage{cmbright} 
+
+\pgfplotsset{compat=1.18}
+% \def\dir{examples/basis_pursuit}
+\def\dir{.}
+
+\begin{document}  
+\vspace*{-10pt}  
+\hspace*{-20pt}
+\begin{tikzpicture}[scale=1.0]  
+  \begin{axis}[enlargelimits=0.1,  
+    samples=200, 
+    width=1.02\textwidth, 
+    height=1.12\textheight, 
+    ymode=log,
+    %xmode=log,
+    xmin=10, 
+    xmax=2000, 
+    ymin=1e-15,  
+    ymax=0.1,
+    %xtick={1,5e3,1e4},
+    % xticklabels={1,10K,20K}, 
+    xlabel={\small Iteration}, 
+    %ylabel={\small Criterion},
+    x label style={at={(axis description cs:0.5,0.02)},anchor=north},
+    %y label style={at={(axis description cs:0.02,0.5)},anchor=north}
+    ]    
+    % Linearized Method of Multipliers 
+    \addplot[tension=0.01, line width=1.5, black] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=1] {\dir/bp-viol-plots.csv}; 
+    % Linearized Bregman
+    \addplot[tension=0.01, line width=1.5, TypalGreen] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=2] {\dir/bp-viol-plots.csv};              
+    % Primal Dual Hybrid Gradient
+    \addplot[tension=0.01, line width=1.5,   TypalRed] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=3] {\dir/bp-viol-plots.csv};    
+    % PNS
+    \addplot[tension=0.01, line width=1.5, TypalBlue] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y expr=\thisrowno{0}+1e-30] {\dir/bp-viol-plots.csv};    
+  \end{axis} 
+  \draw[TypalBlue]  (0.3, 0.70) node[right] {PP};
+  \draw[TypalRed]   (0.3, 3.3) node[right] {PDHG};
+  \draw[black]      (3.0, 3.0) node[right] {LMM};
+  \draw[TypalGreen!80!black] (3.0, 3.86) node[right] {LB};
+\end{tikzpicture} 
+\vspace*{-20pt}  
+
+ 
+\newpage
+  \vspace*{-10pt}  
+  \hspace*{-20pt}
+  \begin{tikzpicture}[scale=1.0]  
+    \begin{axis}[enlargelimits=0.1, 
+      samples=200, 
+      width=1.13\textwidth, 
+      height=1.12\textheight, 
+      %ymode=log,
+       xmode=log,  
+      xmin=1,
+      xmax=1500, 
+      ymin=0.0,   
+      ymax=420, 
+      xlabel={\small Iteration}, 
+      %ylabel={\small Criterion},
+      x label style={at={(axis description cs:0.5,0.02)},anchor=north},
+      y label style={at={(axis description cs:0.02,0.5)},anchor=north}
+      ]   
+      % Linearized Method of Multipliers 
+      \addplot[tension=0.01, line width=1.5, smooth, black] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=1] {\dir/bp-obj-plots.csv}; 
+      % Linearized Bregman
+      \addplot[tension=0.01, line width=1.5, smooth, TypalGreen] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=2] {\dir/bp-obj-plots.csv};              
+      % Primal Dual Hybrid Gradient
+      \addplot[tension=0.01, line width=1.5, smooth,  , TypalRed] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=3] {\dir/bp-obj-plots.csv};    
+      % PNS
+      \addplot[tension=0.01, line width=2.0, smooth, TypalBlue] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=0] {\dir/bp-obj-plots.csv};         
+    \end{axis}  
+    \draw[TypalBlue]  (0.65, 3.5) node[right] {PP};
+    \draw[TypalRed]   (2.0, 2.75) node[right] {PDHG};
+    \draw[black]      (2.1, 1.5) node[right] {\small LMM};
+    \draw[TypalGreen!80!black] (3.40, 0.55) node[right] {LB};     
+  \end{tikzpicture} 
+  \vspace*{-20pt}  
+
+ 
+
+
+  \newpage
+  \vspace*{-10pt} 
+  \hspace*{-20pt}
+  \begin{tikzpicture}[scale=1.0]  
+    \begin{axis}[enlargelimits=0.1, 
+      samples=200, 
+      width=1.02\textwidth, 
+      height=1.12\textheight, 
+      ymode=log,
+      % xmode=log,
+      xmin=1,
+      xmax=2000,  
+      ymin=0.0,   
+      ymax=10,
+      %xtick={1,1e4,2e4}, 
+      %xticklabels={1,10K,20K}, 
+      xlabel={\small Iteration}, 
+      %ylabel={\small Criterion},
+      x label style={at={(axis description cs:0.5,0.02)},anchor=north},
+      y label style={at={(axis description cs:0.02,0.5)},anchor=north}
+      ]   
+      % Linearized Method of Multipliers 
+      \addplot[tension=0.01, line width=1.5, smooth, black] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=1] {\dir/bp-res-plots.csv}; 
+      % Linearized Bregman
+      \addplot[tension=0.01, line width=1.5, smooth, TypalGreen] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=2] {\dir/bp-res-plots.csv};              
+      % Primal Dual Hybrid Gradient
+      \addplot[tension=0.01, line width=1.5, smooth,   TypalRed] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=3] {\dir/bp-res-plots.csv};    
+      % PNS
+      \addplot[tension=0.01, line width=2.0, smooth, TypalBlue] table [col sep=comma, x expr=\plotSpacing*\coordindex+1, y index=0] {\dir/bp-res-plots.csv};         
+    \end{axis}  
+    \draw[TypalBlue]  (2.9,  0.60) node[right] {PP};
+    \draw[TypalRed]   (2.9, 3.40) node[right] {PDHG};
+    \draw[black]      (0.7,  3.70) node[right] {LMM};
+    \draw[TypalGreen!80!black] (2.9,  2.7) node[right] {LB};      
+  \end{tikzpicture} 
+  \vspace*{-100pt}  
+\end{document} 

@@ -1,14 +1,19 @@
 "Create pydantic object for keeping track of statistics"
 
-import numpy as np
 from dataclasses import dataclass, field
+from typing import Any
+
+import numpy as np
+
 
 @dataclass
 class OptimizationStats:
+    """Class for storing metrics to measure convergence of optimization schemes"""
+
     matrix: np.ndarray
     measurements: np.ndarray
-    x_vals: list[np.ndarray] =  field(default_factory=list)
-    x_p_vals: list[np.ndarray] =  field(default_factory=list)
+    x_vals: list[np.ndarray] = field(default_factory=list)
+    x_p_vals: list[np.ndarray] = field(default_factory=list)
     execution_time: float = 0.0
 
     def add_iteration(self, x: np.ndarray, x_p: np.ndarray):
@@ -16,7 +21,8 @@ class OptimizationStats:
         self.x_vals.append(x)
         self.x_p_vals.append(x_p)
 
-    def metrics(self) -> dict[np.ndarray]:
+    def get_metrics(self) -> dict[str, Any]:
+        """Get numpy arrays of each metric"""
         num_iters = len(self.x_vals)
         residuals = np.zeros((num_iters))
         objectives = np.zeros((num_iters))
@@ -25,5 +31,10 @@ class OptimizationStats:
             residuals[i] = np.linalg.norm(self.x_vals[i] - self.x_p_vals[i])
             objectives[i] = np.linalg.norm(self.x_vals[i], ord=1)
             violations[i] = np.linalg.norm(self.matrix @ self.x_vals[i] - self.measurements)
-        vals = {"res": residuals, "obj": objectives, "viol": violations, "time": self.execution_time}
+        vals = {
+            "res": residuals,
+            "obj": objectives,
+            "viol": violations,
+            "time": self.execution_time,
+        }
         return vals

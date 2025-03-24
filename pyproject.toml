@@ -1,5 +1,5 @@
 [project]
-name = "proximal-projection"
+name = "proximal_projection"
 version = "0.1.0"
 description = "Implementation of the proximal projection method"
 authors = [{name = "Howard Heaton", email = "research@typal.academy"}]
@@ -13,13 +13,14 @@ packages = [{ include = "proximal_projection", from = "src" }]
 
 [tool.poetry.scripts]
 basis_pursuit_experiment = "examples.basis_pursuit.basis_pursuit_experiment:run_basis_pursuit_experiment"
-
+compile-latex = "scripts.compile_latex:compile_latex"
 
 
 [tool.poetry.dependencies]
 python = ">=3.9"
 pydantic = "^2.10.6"
 numpy = "^1.26.4"  # Use the latest stable NumPy version
+matplotlib = "^3.8.0" 
 
 
 [tool.poetry.group.dev.dependencies]
@@ -35,7 +36,7 @@ target-version = ['py312']
 
 
 [tool.pylint."MESSAGES CONTROL"]
-disable = ["invalid-name"]
+disable = ["invalid-name", "consider-using-f-string", "import-error"]
 
 
 [tool.mypy]

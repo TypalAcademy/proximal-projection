@@ -31,16 +31,16 @@ jobs:
 
     # Run Pylint for static code analysis
     - name: Run Pylint
-      run: poetry run pylint ./src/
+      run: poetry run pylint .
         
     # Run Black to check code formatting
     - name: Run Black
-      run: poetry run black --check ./src/
+      run: poetry run black --check .
 
     # Run MyPy to check type annotation
     - name: Run MyPy
-      run: poetry run mypy ./src/
+      run: poetry run mypy .
 
     # Run Flake8 to check code style
     - name: Run Flake8
-      run: poetry run flake8 ./src/  --verbose
+      run: poetry run flake8 . --verbose

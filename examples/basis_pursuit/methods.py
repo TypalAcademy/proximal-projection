@@ -4,7 +4,7 @@ import time
 
 import numpy as np
 
-from proximal_projection.examples.basis_pursuit.stats import OptimizationStats
+from examples.basis_pursuit.stats import OptimizationStats
 
 
 def shrink(xi: np.ndarray, alpha: float) -> np.ndarray:

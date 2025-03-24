@@ -6,7 +6,7 @@ from typing import Any, Callable
 
 import numpy as np
 
-from proximal_projection.examples.basis_pursuit.methods import (
+from examples.basis_pursuit.methods import (
     linearized_bregman,
     linearized_method_multipliers,
     primal_dual_hybrid_gradient,

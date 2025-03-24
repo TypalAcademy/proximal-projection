@@ -1,5 +1,5 @@
 
 
-def proximal_projection():
+def func():
     "TBD"
     pass

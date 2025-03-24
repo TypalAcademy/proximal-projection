@@ -91,9 +91,9 @@ nav:
     - 'Proximal Projection': proximal_projection.md
     - 'Examples':
         - 'Basis Pursuit': basis_pursuit.md
-        - 'Principal Component Pursuit': notebooks/stable_principal_component_pursuit.ipynb    
-        - 'Earth Movers Distance': notebooks/earth_movers_distance.ipynb
-        - 'Matrix Completion': notebooks/stable_matrix_completion.ipynb
+        # - 'Principal Component Pursuit': notebooks/stable_principal_component_pursuit.ipynb    
+        # - 'Earth Movers Distance': notebooks/earth_movers_distance.ipynb
+        # - 'Matrix Completion': notebooks/stable_matrix_completion.ipynb
 
 
 copyright: |

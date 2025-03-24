@@ -13,8 +13,8 @@ $$
 $$
 
 
-::: src.proximal_projection.proximal_projection.func
+<!-- ::: src.proximal_projection.proximal_projection.func
     options:
-      show_root_heading: false
+      show_root_heading: false -->
 
 <br>
